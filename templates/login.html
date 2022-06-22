@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<b>{{ message }}</b>
+<br>
+<b>Login to manage your Nachos</b>
+<form>
+    <label for="userName">User Name</label><br>
+    <input type="text" id="userName" name="userName">
+    <button type="submit">Login</button>
+</form>
+<br>
+<br>
+<br>
+<form>
+    <label for="email">No account? We'll send you a link and get you started</label><br>
+    <input type="text" id="email" name="email">
+    <button type="submit">Sign-up</button>
+</form>
+{% endblock %}

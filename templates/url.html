@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<b>{{ message }}</b>
+<form>
+    <label for="userURL">This is Nacho URL</label><br>
+    <input type="text" id="userURL" name="userURL" value="{{ shortURL }}">
+
+</form>
+
+{% endblock %}

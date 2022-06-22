@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<b>{{ message }}</b>
+<form method="POST" action="/surl">
+    {{ form.csrf_token }}
+    {{ form.userURL.label }} {{ form.userURL(size=20) }}
+    <button type="submit">Submit</button>
+</form>
+
+
+{% endblock %}

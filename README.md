@@ -1,2 +1,2 @@
-# NachoClick
-Nacho Click Python URL Shortner
+# Nacho.Click short Nacho URLs
+

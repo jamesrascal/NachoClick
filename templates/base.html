@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='water.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nacho.Click</title>
+</head>
+<style>
+    @-ms-viewport {
+        width: device-width;
+    }
+
+    .main {
+        padding-top: 50px;
+        padding-right: 10px;
+        margin-right: 10px;
+    }
+
+    input[type=text] {
+        border-radius: 10px;
+        width: 100%;
+    }
+    footer {
+        margin-top: 50px;
+    }
+    footer > img {
+        text-align: right;
+        float: left;
+    }
+
+    header > img {
+        text-align: right;
+        float: left;
+    }
+    .hidden {
+        margin: 0px;
+        padding: 0px;
+        visibility: hidden;
+    }
+</style>
+<body>
+<div class="parent">
+    <div class="header"><a href="/"> <img src="{{ url_for('static', filename='nachosm.png') }}" width="85px"></a>
+        <a href="/account">
+            <div class="hidden">
+        <button style="float: right;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+            </svg>
+            Account
+        </button></a>
+        </div>
+    </div>
+    <div id="content">
+        <div class="main">{% block content %}{% endblock %}</div></div>
+    <div id="footer">
+        <footer><img src="{{ url_for('static', filename='nachosm.png') }}" width="25px"><small><a href="http://nacho.click">nacho.click - A URL shortener that is Nachos</a></small></footer>
+    </div>
+</body>
+</html>
