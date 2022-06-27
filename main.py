@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 baseURL = 'http://nacho.click/'
 nachDB = 'urldb.json'
-
+# wtf flask form to submit generated URL.
 class ShortURLForm(FlaskForm):
     userURL = StringField('Enter URL to be shortened', validators=[DataRequired()])
 
@@ -25,11 +25,14 @@ def entry_point(path):
     except:
         return('Loading of the NachoDB failed')
     nachodata = json.load(f)
-    if path in nachodata:
-        return redirect(nachodata[path], code=302)
     if request.method == 'GET':
+        # Checks if there's a path in the URL then redirects.
+        if path in nachodata:
+            return redirect(nachodata[path], code=302)
+        # If no route is found then default to the main template
         return render_template('main.html', form=ShortURLForm())
     if request.method == 'POST':
+        # Generates a short URL from user submitted long URL
         shorty = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(8))  # Uses secrets to make the secret
         try:
             nachodata[shorty] = request.form['userURL']  # Save to dict then redirect.
@@ -40,6 +43,5 @@ def entry_point(path):
         return render_template('url.html', shortURL=f"{baseURL}{shorty}")
     else:
         return render_template('error.html', message='Something went wrong?')
-
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=80)
